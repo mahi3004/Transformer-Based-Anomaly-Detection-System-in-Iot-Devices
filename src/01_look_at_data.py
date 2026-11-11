@@ -22,7 +22,7 @@ print("File Shape= ",df.shape)
 print("File Dimension",df.ndim)
 
 # printing the first 12 column names
-print("First 12 column names- ",df.columns[:12])
+print("First 12 column names- ",df.columns[:12].tolist())
 
 print(files[-1].name)
 df=pd.read_csv(files[-1])
@@ -42,13 +42,16 @@ print(df.columns)
 # counting benign rows
 benign=df[df["File Name"].str.contains("benign")]
 benign_count=benign["Data Count"].sum()
+print("Number of Benign files: ",benign.shape[0])
 print("Benign rows- ",benign_count)
 
 # counting gafgyt rows
 gafgyt=df[df["File Name"].str.contains("gafgyt")]
 gafgyt_count=gafgyt["Data Count"].sum()
+print("Number of gafgyt files: ",gafgyt.shape[0])
 print("Gafgyt rows- ",gafgyt_count)
 
 # counting mirai rows
 mirai_count=df[df["File Name"].str.contains("mirai")]["Data Count"].sum()
+print("Number of Mirai files: ",df[df["File Name"].str.contains("mirai")].shape[0])
 print("Mirai rows- ",mirai_count)
